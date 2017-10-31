@@ -3,6 +3,19 @@ var path = require('path')
 // webpack
 var webpack = require('webpack')
 
+// html plugin class
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+// html plugin instance
+const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+  // client has template
+  template: './client/index.html',
+  // out is index html
+  filename: 'index.html',
+  // inject body
+  inject: 'body'
+})
+
 module.exports = {
   // Input
   entry: './client/index.js',
@@ -44,6 +57,11 @@ module.exports = {
       }
     ]
   },
+
+  // plugin for array, module for obj
+  plugins: [
+    HtmlWebpackPluginConfig
+  ],
 
   resolve: {
     // es module == esm
